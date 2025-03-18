@@ -1,0 +1,15 @@
+services:
+  - name: selenium-app
+    type: web
+    runtime: python
+    repo: https://github.com/seu-usuario/seu-repo
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn -b 0.0.0.0:10000 app:app"
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: CHROMEDRIVER_PATH
+        value: "/usr/bin/chromedriver"
+    autoDeploy: true
+    region: oregon  # Pode mudar para frankfurt se precisar
+    plan: free
